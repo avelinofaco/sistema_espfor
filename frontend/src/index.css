@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --color-brand-orange: #f26b21;
+  --color-orange-dark: #d95312;
+  --color-orange-soft: #fff2e9;
+  --color-brand-teal: #16a69a;
+  --color-teal-dark: #0c7c75;
+  --color-teal-soft: #e6f7f5;
+  --color-brand-blue: #3978bc;
+  --color-blue-soft: #eaf3fc;
+  --color-ink: #172b3a;
+  --color-muted: #71808c;
+  --color-canvas: #f6f8fa;
+  --shadow-card: 0 10px 35px rgba(23, 43, 58, 0.055);
+  --shadow-brand: 0 10px 24px rgba(242, 107, 33, 0.24);
+}
+
+@layer base {
+  body {
+    min-width: 320px;
+    min-height: 100vh;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2 {
+    letter-spacing: -0.02em;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--color-brand-teal) 30%, transparent);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .input-shell {
+    @apply flex h-14 items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 transition focus-within:border-brand-teal focus-within:bg-white focus-within:ring-4 focus-within:ring-brand-teal/10;
+  }
+
+  .primary-button {
+    @apply flex h-14 w-full items-center justify-center gap-3 rounded-2xl bg-brand-orange px-6 text-sm font-extrabold text-white shadow-brand transition hover:bg-orange-dark hover:shadow-lg active:scale-[0.99];
+  }
+
+  .icon-button {
+    @apply flex size-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-ink transition hover:border-brand-teal/30 hover:bg-teal-soft hover:text-brand-teal;
+  }
+
+  .sidebar-link {
+    @apply flex h-12 w-full items-center gap-3 rounded-xl px-4 text-sm font-semibold text-white/60 transition hover:bg-white/[0.06] hover:text-white;
+  }
+
+  .sidebar-link-active {
+    @apply bg-white/[0.09] text-white;
+  }
+
+  .summary-card {
+    @apply rounded-3xl border border-slate-200/80 bg-white p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .card-icon {
+    @apply flex size-11 shrink-0 items-center justify-center rounded-2xl;
+  }
+
+  .badge {
+    @apply rounded-full px-3 py-1.5 text-[0.62rem] font-extrabold;
+  }
+
+  .badge-orange {
+    @apply bg-orange-soft text-brand-orange;
+  }
+
+  .badge-teal {
+    @apply bg-teal-soft text-teal-dark;
+  }
+
+  .badge-blue {
+    @apply bg-blue-soft text-brand-blue;
+  }
+
+  .quick-link {
+    @apply flex w-full items-center gap-4 rounded-2xl border border-slate-100 p-4 transition hover:border-slate-200 hover:bg-slate-50;
+  }
+
+  .profile-option {
+    @apply relative min-h-32 cursor-pointer rounded-2xl border border-slate-200 bg-white p-4 transition hover:-translate-y-0.5 hover:border-brand-teal/40 hover:shadow-card;
+  }
+
+  .profile-option-active {
+    @apply border-brand-teal bg-teal-soft/40 ring-4 ring-brand-teal/10;
+  }
+
+  .field-label {
+    @apply mb-2 block text-sm font-bold text-ink;
+  }
+
+  .form-input {
+    @apply w-full min-w-0 bg-transparent text-sm text-ink outline-none placeholder:text-slate-400;
+  }
+
+  .form-textarea {
+    @apply min-h-28 w-full resize-y rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-ink outline-none transition placeholder:text-slate-400 focus:border-brand-teal focus:bg-white focus:ring-4 focus:ring-brand-teal/10;
+  }
+
+  .standalone-input {
+    @apply h-14 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 text-sm text-ink outline-none transition focus:border-brand-teal focus:bg-white focus:ring-4 focus:ring-brand-teal/10;
+  }
+
+  .compact-input {
+    @apply h-9 w-full rounded-lg border border-slate-200 bg-white px-3 text-[0.68rem] text-ink outline-none transition focus:border-brand-teal;
+  }
+
+  .secondary-button {
+    @apply h-14 rounded-2xl border border-slate-200 bg-white px-6 text-sm font-extrabold text-ink transition hover:border-slate-300 hover:bg-slate-50;
+  }
+
+  .association-option {
+    @apply flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 text-left transition hover:border-brand-teal/40;
+  }
+
+  .association-option-active {
+    @apply border-brand-teal bg-teal-soft/30 ring-4 ring-brand-teal/10;
+  }
+}
+
+.pattern-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal {
+  animation: reveal 240ms ease-out both;
+}
